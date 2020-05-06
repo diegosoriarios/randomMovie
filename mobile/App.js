@@ -7,7 +7,8 @@
  */
 
 import React from 'react';
-import Similar from './src/Pages/Similar'
+import Routes from './src/routes';
+import Similar from './src/Pages/Similar/';
 
 function App(){
   return (
