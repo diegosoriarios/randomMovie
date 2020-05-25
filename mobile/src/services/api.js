@@ -35,7 +35,5 @@ export async function getGenreName(ids) {
     }
   });
 
-  console.log(genreNames);
-
   return genreNames;
 }

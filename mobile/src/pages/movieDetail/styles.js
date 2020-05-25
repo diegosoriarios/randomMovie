@@ -3,7 +3,6 @@ import {StyleSheet} from 'react-native';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'red',
   },
   backgroundDetail: {
     height: '40%',
@@ -35,11 +34,14 @@ const styles = StyleSheet.create({
     elevation: 20,
   },
   bookmark: {
-    marginLeft: 20,
-    marginTop: -25,
+    //marginLeft: 20,
+    marginTop: -15,
+    top: '40%',
+    left: 20,
     borderRadius: 50,
     width: 50,
     height: 50,
+    position: 'absolute',
     backgroundColor: 'white',
     justifyContent: 'center',
     alignItems: 'center',
@@ -54,16 +56,27 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   leftDetails: {
-    width: '50%',
-    justifyContent: 'space-around',
+    width: '40%',
+    justifyContent: 'space-evenly',
   },
   rightDetails: {
-    width: '50%',
+    width: '60%',
   },
   image: {
     width: '100%',
     //height: 100,
     aspectRatio: 1.2,
+  },
+  content: {
+    margin: 20,
+  },
+  title: {
+    fontSize: 25,
+    fontWeight: 'bold',
+  },
+  description: {
+    fontSize: 18,
+    textAlign: 'justify',
   },
 });
 

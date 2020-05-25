@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import styles from './styles';
+import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {getGenreName} from '../../services/api';
 Icon.loadFont();
@@ -15,20 +16,24 @@ Icon.loadFont();
 const movieDetail = ({route}) => {
   const {movie} = route.params;
   const [genres, setGenres] = useState([]);
+  const navigation = useNavigation();
 
   async function getGenres() {
     const grs = await getGenreName(movie.genre_ids);
     setGenres(grs);
-    console.log(genres);
   }
 
-  useEffect(() => getGenres(), []);
+  useEffect(() => {
+    getGenres();
+  });
 
   return (
     <View style={styles.container}>
       <View style={styles.backgroundDetail} />
       <View style={styles.header}>
-        <TouchableOpacity style={styles.back} onPress={() => {}}>
+        <TouchableOpacity
+          style={styles.back}
+          onPress={() => navigation.navigate('Feed')}>
           <Icon name="arrow-back" size={20} color="#000" />
         </TouchableOpacity>
       </View>
@@ -37,7 +42,7 @@ const movieDetail = ({route}) => {
           <View style={styles.leftDetails}>
             <Text>{movie.vote_average}</Text>
             {genres.map(genre => (
-              <Text>{genres}</Text>
+              <Text key={genre}>{genre}</Text>
             ))}
           </View>
           <View style={styles.rightDetails}>
@@ -52,8 +57,10 @@ const movieDetail = ({route}) => {
       <TouchableHighlight style={styles.bookmark} onPress={() => {}}>
         <Icon name="bookmark" size={20} color="#000" />
       </TouchableHighlight>
-      <Text>{movie.title}</Text>
-      <Text>{movie.overview}</Text>
+      <View style={styles.content}>
+        <Text style={styles.title}>{movie.title}</Text>
+        <Text style={styles.description}>{movie.overview}</Text>
+      </View>
     </View>
   );
 };
