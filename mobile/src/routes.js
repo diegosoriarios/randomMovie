@@ -9,7 +9,7 @@ const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 import HomePage from './pages/home';
-import movieDetail from './pages/movieDetail';
+import MovieDetail from './pages/MovieDetail';
 
 function Profile() {
   alert('Profile');
@@ -23,7 +23,7 @@ function Profile() {
 const Home = () => (
   <Stack.Navigator screenOptions={{headerShown: false}}>
     <Stack.Screen name="Feed" component={HomePage} />
-    <Stack.Screen name="Detail" component={movieDetail} />
+    <Stack.Screen name="Detail" component={MovieDetail} />
   </Stack.Navigator>
 );
 

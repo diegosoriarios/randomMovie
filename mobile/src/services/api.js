@@ -24,7 +24,8 @@ export async function findSimilarMovie(id) {
 }
 
 export async function getGenreName(ids) {
-  let genreUrl = `https://api.themoviedb.org/3/genre/movie/list?api_key=fc9e6d8f685e69fb9398d50821c31f08&language=en-US`;
+  let genreUrl =
+    'https://api.themoviedb.org/3/genre/movie/list?api_key=fc9e6d8f685e69fb9398d50821c31f08&language=en-US';
 
   const response = await axios.get(genreUrl);
 

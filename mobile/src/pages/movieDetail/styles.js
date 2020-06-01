@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     shadowColor: '#000',
-    shadowOffset: {width: 50, height: 50},
+    // shadowOffset: {width: 50, height: 50},
     shadowOpacity: 1,
     shadowRadius: 20,
     elevation: 20,
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     shadowColor: '#000',
-    shadowOffset: {width: 50, height: 50},
+    // shadowOffset: {width: 50, height: 50},
     shadowOpacity: 1,
     shadowRadius: 20,
     elevation: 20,
@@ -69,6 +69,8 @@ const styles = StyleSheet.create({
   },
   content: {
     margin: 20,
+    position: 'absolute',
+    top: '45%',
   },
   title: {
     fontSize: 25,

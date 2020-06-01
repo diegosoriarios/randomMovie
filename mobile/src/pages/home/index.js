@@ -12,7 +12,6 @@ import styles from './styles';
 import {findMovieId, findSimilarMovie} from '../../services/api';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-Icon.loadFont();
 
 function HomePage() {
   const [movieName, setMovieName] = useState('');

@@ -11,9 +11,8 @@ import styles from './styles';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {getGenreName} from '../../services/api';
-Icon.loadFont();
 
-const movieDetail = ({route}) => {
+const MovieDetail = ({route}) => {
   const {movie} = route.params;
   const [genres, setGenres] = useState([]);
   const navigation = useNavigation();
@@ -65,4 +64,4 @@ const movieDetail = ({route}) => {
   );
 };
 
-export default movieDetail;
+export default MovieDetail;
