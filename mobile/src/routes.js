@@ -9,16 +9,8 @@ const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 import HomePage from './pages/home';
-import MovieDetail from './pages/MovieDetail';
-
-function Profile() {
-  alert('Profile');
-  return (
-    <View style={{backgroundColor: 'blue'}}>
-      <Text>Profile</Text>
-    </View>
-  );
-}
+import MovieDetail from './pages/movieDetail';
+import Profile from './pages/profile';
 
 const Home = () => (
   <Stack.Navigator screenOptions={{headerShown: false}}>

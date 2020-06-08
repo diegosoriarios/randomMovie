@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import {
   View,
   Text,
@@ -11,15 +11,21 @@ import styles from './styles';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {getGenreName} from '../../services/api';
+import MyContext from '../../services/context';
 
 const MovieDetail = ({route}) => {
   const {movie} = route.params;
   const [genres, setGenres] = useState([]);
   const navigation = useNavigation();
+  const { movieList, setMovieList } = useContext(MyContext)
 
   async function getGenres() {
     const grs = await getGenreName(movie.genre_ids);
     setGenres(grs);
+  }
+
+  function bookmarkBook() {
+    setMovieList([...movieList, movie]);
   }
 
   useEffect(() => {
@@ -53,7 +59,7 @@ const MovieDetail = ({route}) => {
           </View>
         </View>
       </View>
-      <TouchableHighlight style={styles.bookmark} onPress={() => {}}>
+      <TouchableHighlight style={styles.bookmark} onPress={bookmarkBook}>
         <Icon name="bookmark" size={20} color="#000" />
       </TouchableHighlight>
       <View style={styles.content}>
