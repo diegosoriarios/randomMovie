@@ -16,8 +16,9 @@ import MyContext from '../../services/context';
 const MovieDetail = ({route}) => {
   const {movie} = route.params;
   const [genres, setGenres] = useState([]);
+  const [iconName, setIconName] = useState("bookmark");
   const navigation = useNavigation();
-  const { movieList, setMovieList } = useContext(MyContext)
+  const { bookmarkMovie, movieIsSaved } = useContext(MyContext)
 
   async function getGenres() {
     const grs = await getGenreName(movie.genre_ids);
@@ -25,11 +26,18 @@ const MovieDetail = ({route}) => {
   }
 
   function bookmarkBook() {
-    setMovieList([...movieList, movie]);
+    bookmarkMovie(movie);
+    movieIsBookmarked();
+  }
+
+  function movieIsBookmarked() {
+    if(movieIsSaved(movie)) setIconName("bookmark");
+    else setIconName("bookmark-border");
   }
 
   useEffect(() => {
     getGenres();
+    movieIsBookmarked();
   });
 
   return (
@@ -60,7 +68,7 @@ const MovieDetail = ({route}) => {
         </View>
       </View>
       <TouchableHighlight style={styles.bookmark} onPress={bookmarkBook}>
-        <Icon name="bookmark" size={20} color="#000" />
+        <Icon name={iconName} size={20} color="#000" />
       </TouchableHighlight>
       <View style={styles.content}>
         <Text style={styles.title}>{movie.title}</Text>

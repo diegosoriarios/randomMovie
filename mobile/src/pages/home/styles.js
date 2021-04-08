@@ -8,18 +8,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   textInput: {
-    borderBottomColor: '#000',
-    width: 100,
-    borderBottomWidth: 1,
-    textAlign: 'center',
+    width: '80%',
   },
   backgroundDetail: {
-    width: '70%',
+    width: '200%',
     height: '70%',
-    borderBottomLeftRadius: 50,
+    borderBottomLeftRadius: 100,
+    transform: [{ rotate: '20deg'}],
     position: 'absolute',
-    left: '40%',
-    top: 0,
+    left: -100,
+    top: -50,
+    zIndex: -1,
     backgroundColor: '#00b4d8',
   },
   image: {
@@ -31,8 +30,10 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 25,
     flexDirection: 'row',
-    justifyContent: 'space-around',
-    width: '100%',
+    justifyContent: 'flex-end',
+    width: '80%',
+    backgroundColor: 'grey',
+    borderRadius: 50
   },
   search: {
     borderRadius: 50,

@@ -1,17 +1,24 @@
 import React, { useContext } from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 import MyContext from '../../services/context'
 import { FlatList } from 'react-native-gesture-handler';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import styles from './styles';
 
 const Profile = () => {
-  const { movieList } = useContext(MyContext)
+  const { savedMovieList, removeSavedMovie } = useContext(MyContext)
 
-  function Item({movie}) {
+  function Item({ movie }) {
     console.log(movie)
     return (
       <View style={styles.item}>
-        <Text style={styles.title}>{movie.title}</Text>
-        <Image source={{uri: `${movie.image}`}} style={styles.image}></Image>
+        <View style={styles.itemDetails}>
+          <Image source={{ uri: `${movie.image}` }} style={styles.image}></Image>
+          <Text style={styles.title}>{movie.title}</Text>
+        </View>
+        <TouchableOpacity onPress={() => removeSavedMovie(movie.id)}>
+          <Icon name="close" size={20} color="#000" />
+        </TouchableOpacity>
       </View>
     );
   }
@@ -19,12 +26,13 @@ const Profile = () => {
   return (
     <View style={{ flex: 1 }}>
       <View style={styles.headerContainer}>
-        <Text>Profile</Text>
+        <Image source={{ uri: "https://i.pravatar.cc/300" }} style={styles.avatar} />
+        <Text style={styles.name}>Diego</Text>
       </View>
-      <FlatList 
+      <FlatList
         style={styles.flatList}
-        data={movieList}
-        renderItem={({item}) => <Item movie={item} />}
+        data={savedMovieList}
+        renderItem={({ item }) => <Item movie={item} />}
         keyExtractor={movie => `${movie.id}`}
       />
     </View>
@@ -32,39 +40,3 @@ const Profile = () => {
 }
 
 export default Profile;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-  },
-  headerContainer: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  flatList: {
-    flex: 2,
-  },
-  item: {
-    backgroundColor: '#555',
-    padding: 20,
-    width: '90%',
-    marginVertical: 2,
-    marginHorizontal: 16,
-    flexDirection: 'row-reverse',
-    justifyContent: 'flex-end',
-    alignItems: 'center'
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginLeft: 25,
-  },
-  image: {
-    width: 100,
-    height: 100,
-    borderRadius: 100,
-    //aspectRatio: 1.2
-  }
-});

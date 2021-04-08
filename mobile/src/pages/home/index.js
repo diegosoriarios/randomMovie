@@ -7,11 +7,14 @@ import {
   Image,
   Keyboard,
   ToastAndroid,
+  KeyboardAvoidingView,
+  Platform
 } from 'react-native';
 import styles from './styles';
 import {findMovieId, findSimilarMovie} from '../../services/api';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { dateFormat } from '../../services/format';
 
 function HomePage() {
   const [movieName, setMovieName] = useState('');
@@ -36,13 +39,11 @@ function HomePage() {
   }
 
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === "ios" ? "padding" : "height"}>
       <View style={styles.backgroundDetail} />
       <View style={styles.header}>
-        <TouchableOpacity style={styles.menu} onPress={() => {}}>
-          <Icon name="more-horiz" size={20} color="#000" />
-        </TouchableOpacity>
         <TextInput
+          selectionColor="white"
           style={styles.textInput}
           value={movieName}
           onChangeText={text => setMovieName(text)}
@@ -61,14 +62,14 @@ function HomePage() {
             style={styles.image}
           />
           <Text style={styles.cardTitle}>{movie.title}</Text>
-          <Text style={styles.cardDate}>{movie.release_date}</Text>
+          <Text style={styles.cardDate}>{dateFormat(movie.release_date)}</Text>
           <Text style={styles.cardDescription} numberOfLines={3}>
             {movie.overview}
           </Text>
           <Text style={styles.cardRating}>Rating: {movie.vote_average}</Text>
         </TouchableOpacity>
       )}
-    </View>
+    </KeyboardAvoidingView>
   );
 }
 

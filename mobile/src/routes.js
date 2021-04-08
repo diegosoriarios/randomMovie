@@ -5,6 +5,8 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
+import Icon from 'react-native-vector-icons/MaterialIcons';
+
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
@@ -23,8 +25,19 @@ function Routes() {
   return (
     <NavigationContainer>
       <Tab.Navigator initialRouteName="HomePage">
-        <Tab.Screen name="HomePage" component={Home} />
-        <Tab.Screen name="Me" component={Profile} />
+        <Tab.Screen name="HomePage" component={Home} options={{
+          tabBarLabel: 'Home',
+          tabBarIcon: ({ color, size }) => (
+            <Icon name="home" color={color} size={size} />
+          ),
+        }}
+        />
+        <Tab.Screen name="Me" component={Profile} options={{
+          tabBarLabel: 'Profile',
+          tabBarIcon: ({ color, size }) => (
+            <Icon name="person" color={color} size={size} />
+          ),
+        }}/>
       </Tab.Navigator>
     </NavigationContainer>
   );
