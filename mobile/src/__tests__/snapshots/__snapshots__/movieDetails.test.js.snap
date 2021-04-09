@@ -31,6 +31,7 @@ exports[`renders correctly 1`] = `
     }
   >
     <View
+      accessibilityLabel="backButton"
       accessible={true}
       focusable={true}
       onClick={[Function]}
@@ -125,6 +126,7 @@ exports[`renders correctly 1`] = `
     </View>
   </View>
   <View
+    accessibilityLabel="bookmarkButton"
     accessible={true}
     focusable={true}
     onClick={[Function]}

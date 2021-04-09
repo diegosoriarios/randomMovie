@@ -1,15 +1,18 @@
 import axios from 'axios';
 
 export async function findMovieId(name) {
-  let url = `https://api.themoviedb.org/3/search/movie?api_key=fc9e6d8f685e69fb9398d50821c31f08&language=en-US&query=${name}&page=1&include_adult=true`;
+  try {
+    let url = `https://api.themoviedb.org/3/search/movie?api_key=fc9e6d8f685e69fb9398d50821c31f08&language=en-US&query=${name}&page=1&include_adult=true`;
 
-  const response = await axios.get(url);
-  const id = response.data.results[0].id;
-  return id;
+    const response = await axios.get(url);
+    const id = response.data.results[0].id;
+    return id;
+  } catch (e) {}
 }
 
 export async function findSimilarMovie(id) {
-  let similarMovieUrl = `https://api.themoviedb.org/3/movie/${id}/similar?api_key=fc9e6d8f685e69fb9398d50821c31f08&language=en-US`;
+  try {
+    let similarMovieUrl = `https://api.themoviedb.org/3/movie/${id}/similar?api_key=fc9e6d8f685e69fb9398d50821c31f08&language=en-US`;
 
   const response = await axios.get(similarMovieUrl);
 
@@ -21,10 +24,12 @@ export async function findSimilarMovie(id) {
   movie.image = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
 
   return movie;
+  } catch (e) {}
 }
 
 export async function getGenreName(ids) {
-  let genreUrl =
+  try {
+    let genreUrl =
     'https://api.themoviedb.org/3/genre/movie/list?api_key=fc9e6d8f685e69fb9398d50821c31f08&language=en-US';
 
   const response = await axios.get(genreUrl);
@@ -37,4 +42,5 @@ export async function getGenreName(ids) {
   });
 
   return genreNames;
+  } catch (e) {}
 }

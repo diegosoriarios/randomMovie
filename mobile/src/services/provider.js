@@ -4,9 +4,8 @@ import MyContext from './context';
 function MyProvider({children}) {
   const [savedMovieList, setMovieList] = useState([]);
 
-  const movieIsSaved = (movie) => {
-    return savedMovieList.some((mv) => mv.id == movie.id);
-  }
+  const movieIsSaved = (movie) => savedMovieList.some((mv) => mv.id === movie.id);
+  
 
   const bookmarkMovie = (movie) => {
     const isInList = movieIsSaved(movie)

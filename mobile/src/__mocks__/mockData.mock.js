@@ -40,3 +40,5 @@ const mockData = [
       image: "https://image.tmdb.org/t/p/w500/oxBu1dJt5q1hmxfmk1tF4DgkTco.jpg"
     },
   ];
+
+  export default mockData;

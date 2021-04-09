@@ -1,13 +1,11 @@
-// __tests__/Intro-test.js
 import React from 'react';
 
-import renderer from 'react-test-renderer';
+import renderer, { act } from 'react-test-renderer';
 import MovieDetail from '../../pages/movieDetail/index';
-import {useNavigation} from '@react-navigation/native';
 
 jest.mock('@react-navigation/native');
 
-test('renders correctly', () => {
+test('renders correctly', async (done) => {
   const route = {
     params: {
       movie: {
@@ -21,4 +19,5 @@ test('renders correctly', () => {
   };
   const tree = renderer.create(<MovieDetail route={route} />).toJSON();
   expect(tree).toMatchSnapshot();
+  done();
 });

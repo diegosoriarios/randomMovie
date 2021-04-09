@@ -7,13 +7,18 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "snapshot": "yarn test src/__tests__/snapshots/",
+    "unity": "yarn test src/__tests__/requests/",
+    "e2e": "yarn test src/__tests__/e2e/"
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.10",
     "@react-navigation/bottom-tabs": "^5.4.7",
     "@react-navigation/native": "^5.4.2",
     "@react-navigation/stack": "^5.3.9",
+    "appium": "^1.20.2",
+    "appium-doctor": "^1.16.0",
     "axios": "^0.19.2",
     "react": "16.11.0",
     "react-native": "0.62.2",
@@ -24,7 +29,8 @@
     "react-native-splash-screen": "^3.2.0",
     "react-native-testing-library": "^2.0.0",
     "react-native-vector-icons": "6.6.0",
-    "supertest": "^4.0.2"
+    "supertest": "^4.0.2",
+    "wd": "^1.14.0"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",

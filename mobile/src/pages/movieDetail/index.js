@@ -20,25 +20,27 @@ const MovieDetail = ({route}) => {
   const navigation = useNavigation();
   const { bookmarkMovie, movieIsSaved } = useContext(MyContext)
 
-  async function getGenres() {
+  const getGenres = async () => {
     const grs = await getGenreName(movie.genre_ids);
     setGenres(grs);
+    
   }
-
-  function bookmarkBook() {
+  const bookmarkBook = () => {
     bookmarkMovie(movie);
     movieIsBookmarked();
   }
 
-  function movieIsBookmarked() {
-    if(movieIsSaved(movie)) setIconName("bookmark");
+  const movieIsBookmarked = () => {
+    const isSaved = movieIsSaved(movie);
+    
+    if(isSaved) setIconName("bookmark");
     else setIconName("bookmark-border");
   }
 
   useEffect(() => {
     getGenres();
     movieIsBookmarked();
-  });
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -46,7 +48,9 @@ const MovieDetail = ({route}) => {
       <View style={styles.header}>
         <TouchableOpacity
           style={styles.back}
-          onPress={() => navigation.navigate('Feed')}>
+          onPress={() => navigation.navigate('Feed')}
+          accessibilityLabel="backButton"
+          >
           <Icon name="arrow-back" size={20} color="#000" />
         </TouchableOpacity>
       </View>
@@ -67,7 +71,8 @@ const MovieDetail = ({route}) => {
           </View>
         </View>
       </View>
-      <TouchableHighlight style={styles.bookmark} onPress={bookmarkBook}>
+      <TouchableHighlight style={styles.bookmark} onPress={bookmarkBook} 
+          accessibilityLabel="bookmarkButton">
         <Icon name={iconName} size={20} color="#000" />
       </TouchableHighlight>
       <View style={styles.content}>
